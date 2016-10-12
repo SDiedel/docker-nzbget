@@ -33,5 +33,5 @@ RUN \
 COPY root/ /
 
 # ports and volumes
-VOLUME /config /downloads
+VOLUME /config /downloads /scripts
 EXPOSE 6789
