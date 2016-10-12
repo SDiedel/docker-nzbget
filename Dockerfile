@@ -12,8 +12,9 @@ RUN \
 	p7zip \
 	python \
 	unrar \
-	wget
-
+	wget \
+	git
+	
 # install nzbget
 RUN \
  curl -o \
@@ -24,14 +25,19 @@ RUN \
  /tmp/nzbget.run -L \
 	"${NZBGET_VERSION}" && \
  sh /tmp/nzbget.run --destdir /app && \
-
+ 
 # cleanup
  rm -rf \
 	/tmp/*
 
+# clone clintonhall shizzle
+RUN mkdir /scripts && \
+    git clone https://github.com/clinton-hall/nzbToMedia.git /scripts
+
 # add local files
 COPY root/ /
+COPY /scripts /
 
 # ports and volumes
-VOLUME /config /downloads /scripts
+VOLUME /config /downloads
 EXPOSE 6789
