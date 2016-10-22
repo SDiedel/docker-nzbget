@@ -32,7 +32,8 @@ RUN \
 
 # clone clintonhall shizzle
 RUN mkdir /scripts && \
-    git clone https://github.com/clinton-hall/nzbToMedia.git /scripts
+    git clone https://github.com/clinton-hall/nzbToMedia.git /scripts && \
+    chmod -R 777 scripts/
 
 # add local files
 COPY root/ /
